@@ -25,6 +25,9 @@ TrustLedger provides a neutral, tamper-resistant foundation for establishing and
    - AssetRegistry: Register and manage verifiable digital assets
    - ClaimRegistry: Store claims about assets
    - AttestationRegistry: Issue and manage attestations with revocation
+   - DIDRegistry: Decentralized identity management
+   - IssuerDirectory: Role-based issuer authorization
+   - AuditLog: Append-only audit trail
 
 2. **API Gateway** (Node.js/Express)
    - RESTful interfaces for off-chain interactions
@@ -36,7 +39,7 @@ TrustLedger provides a neutral, tamper-resistant foundation for establishing and
 4. **Indexing Service** (Planned)
    - Efficient querying of attestations and provenance
 
-5. **Identity Layer** (Planned)
+5. **Identity Layer** (Implemented)
    - DID-based identities with verifiable credentials
 
 ## 📦 Current Status
@@ -47,11 +50,13 @@ TrustLedger provides a neutral, tamper-resistant foundation for establishing and
 - Web console for core user flow
 - Unit tests for contracts
 
-### 🔄 In Progress (Phase 2 - Identity + Compliance)
-- DID integration
-- Role-based issuer registry
-- Audit logging
-- Security model enhancements
+### ✅ Completed (Phase 2 - Identity + Compliance)
+- DID Registry for decentralized identities
+- Issuer Directory with role-based access control
+- Audit Log for append-only event tracking
+- Enhanced security: issuer authorization checks, emergency pause
+
+### 🔄 In Progress (Phase 3 - TrustLedger Rights™)
 
 ### 📋 Roadmap
 - **Phase 3**: TrustLedger Rights™ (Intellectual property registry)

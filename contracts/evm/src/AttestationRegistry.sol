@@ -6,6 +6,10 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/utils/PausableUpgradeable.sol";
 
+interface IIssuerDirectory {
+    function isAuthorized(address issuer, bytes32 capability) external view returns (bool);
+}
+
 contract AttestationRegistry is Initializable, UUPSUpgradeable, OwnableUpgradeable, PausableUpgradeable {
     struct Attestation {
         uint256 id;
@@ -30,15 +34,19 @@ contract AttestationRegistry is Initializable, UUPSUpgradeable, OwnableUpgradeab
     event AttestationIssued(uint256 indexed attestationId, uint256 indexed claimId, address indexed issuer);
     event AttestationRevoked(uint256 indexed attestationId, uint256 revokedAt, uint8 reasonCode, string reason);
 
-    function initialize() public initializer {
+    address public issuerDirectory;
+
+    function initialize(address _issuerDirectory) public initializer {
         __Ownable_init(msg.sender);
         __Pausable_init();
+        issuerDirectory = _issuerDirectory;
         nextAttestationId = 1;
     }
 
     function _authorizeUpgrade(address newImplementation) internal override onlyOwner {}
 
     function attest(uint256 claimId, uint256 expiryTimestamp, bytes32 signatureRef) external whenNotPaused returns (uint256) {
+        require(IIssuerDirectory(issuerDirectory).isAuthorized(msg.sender, keccak256("ATTEST")), "Not authorized issuer");
         uint256 attestationId = nextAttestationId++;
         attestations[attestationId] = Attestation({
             id: attestationId,

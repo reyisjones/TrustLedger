@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrustLedger Console</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .section { margin-bottom: 30px; border: 1px solid #ccc; padding: 20px; }
+        input, button { margin: 5px; padding: 8px; }
+        #result { margin-top: 20px; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+    <h1>TrustLedger MVP Console</h1>
+
+    <div class="section">
+        <h2>1. Register Asset</h2>
+        <input type="text" id="assetContent" placeholder="Content hash (e.g., 0x123...)" />
+        <input type="text" id="assetMetadata" placeholder="Metadata URI" />
+        <button onclick="registerAsset()">Register Asset</button>
+        <div id="assetResult"></div>
+    </div>
+
+    <div class="section">
+        <h2>2. Submit Claim</h2>
+        <input type="number" id="claimAssetId" placeholder="Asset ID" />
+        <input type="text" id="claimSchema" placeholder="Schema ID" />
+        <input type="text" id="claimHash" placeholder="Claim hash" />
+        <input type="text" id="claimSubject" placeholder="Subject address" />
+        <button onclick="submitClaim()">Submit Claim</button>
+        <div id="claimResult"></div>
+    </div>
+
+    <div class="section">
+        <h2>3. Issue Attestation</h2>
+        <input type="number" id="attClaimId" placeholder="Claim ID" />
+        <input type="number" id="attExpiry" placeholder="Expiry timestamp" />
+        <input type="text" id="attSignature" placeholder="Signature ref" />
+        <button onclick="issueAttestation()">Issue Attestation</button>
+        <div id="attResult"></div>
+    </div>
+
+    <div class="section">
+        <h2>4. Verify Attestation</h2>
+        <input type="number" id="verifyAttId" placeholder="Attestation ID" />
+        <button onclick="verifyAttestation()">Verify</button>
+        <div id="verifyResult"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

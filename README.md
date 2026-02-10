@@ -28,6 +28,7 @@ TrustLedger provides a neutral, tamper-resistant foundation for establishing and
    - DIDRegistry: Decentralized identity management
    - IssuerDirectory: Role-based issuer authorization
    - AuditLog: Append-only audit trail
+   - RightsRegistry: Intellectual property registry for creative works
 
 2. **API Gateway** (Node.js/Express)
    - RESTful interfaces for off-chain interactions
@@ -56,7 +57,13 @@ TrustLedger provides a neutral, tamper-resistant foundation for establishing and
 - Audit Log for append-only event tracking
 - Enhanced security: issuer authorization checks, emergency pause
 
-### 🔄 In Progress (Phase 3 - TrustLedger Rights™)
+### ✅ Completed (Phase 3 - TrustLedger Rights™)
+- Rights Registry for creative works (compositions, recordings, videos)
+- Split sheets with contributor management and share allocation
+- Proof-of-existence timestamps and provenance tracking
+- IPFS/Arweave metadata integration
+
+### 🔄 In Progress (Phase 4 - Enterprise/Azure Hybrid)
 
 ### 📋 Roadmap
 - **Phase 3**: TrustLedger Rights™ (Intellectual property registry)

@@ -77,7 +77,16 @@ TrustLedger provides a neutral, tamper-resistant foundation for establishing and
 - CI/CD pipeline with GitHub Actions
 - Automated deployment scripts
 
-### 🔄 In Progress (Phase 5 - Ecosystem Hardening)
+### ✅ Completed (Phase 5 - Ecosystem Hardening)
+- Formal verification specifications for critical contracts
+- Third-party security audit report and remediation
+- Community contribution guidelines and grant program
+- Interoperability standards (EIP-like specifications)
+- Module registry for community extensions
+- Governance proposal templates
+- Incident response runbook and procedures
+
+## 📋 Future Roadmap
 
 ### 📋 Roadmap
 - **Phase 3**: TrustLedger Rights™ (Intellectual property registry)
@@ -152,12 +161,46 @@ docker build -f infra/docker/Dockerfile.api -t trustledger/api-gateway .
 docker build -f infra/docker/Dockerfile.indexing -t trustledger/indexing-service .
 ```
 
-## 📚 Documentation
+## � Security
+
+- **Audit Reports**: [2026 Security Audit](audits/audit-report-2026.md)
+- **Formal Verification**: [Certora Specifications](contracts/evm/certora/)
+- **Bug Bounty**: Coming soon
+- **Responsible Disclosure**: security@trustledger.org
+
+## 🔗 Interoperability
+
+TrustLedger implements open standards for cross-chain and cross-protocol compatibility:
+
+- [Interoperability Specifications](docs/specs/interoperability.md)
+- EIP-like proposal process
+- Bridge interfaces for multi-chain support
+- Oracle integration standards
+
+## 🧩 Module Ecosystem
+
+Extend TrustLedger with community modules:
+
+- [Module Registry](docs/modules/README.md)
+- Grant program for module development
+- SDKs and API clients
+- Industry-specific extensions
+
+## 🏛️ Governance
+
+- [Governance Model](GOVERNANCE.md)
+- [Proposal Templates](docs/governance/proposal-template.md)
+- Community decision-making
+- Grant allocation process
+
+## 📖 Documentation
 
 - [Vision Document](docs/vision.md)
 - [Architecture Overview](docs/architecture/)
 - [Smart Contract Specs](docs/specs/contracts.md)
-- [Threat Model](docs/architecture/threat-model.md)
+- [API Documentation](docs/specs/api.md)
+- [Deployment Runbooks](docs/runbooks/)
+- [Contributing Guide](CONTRIBUTING.md)
 
 ## 🤝 Contributing
 

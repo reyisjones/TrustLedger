@@ -47,4 +47,41 @@ async function verifyAttestation() {
     document.getElementById('verifyResult').textContent = JSON.stringify(result, null, 2);
 }
 
+async function registerWork() {
+    const title = document.getElementById('workTitle').value;
+    const workType = document.getElementById('workType').value;
+    const contentHash = document.getElementById('workContentHash').value;
+    const metadataURI = document.getElementById('workMetadataURI').value;
+    const result = await apiCall('/rights/works', 'POST', { title, workType, contentHash, metadataURI });
+    document.getElementById('workResult').textContent = JSON.stringify(result, null, 2);
+}
+
+function addContributor() {
+    const container = document.getElementById('contributors');
+    const div = document.createElement('div');
+    div.className = 'contributor';
+    div.innerHTML = `
+        <input type="text" placeholder="Contributor address" class="contribAddr" />
+        <input type="text" placeholder="Role" class="contribRole" />
+        <input type="number" placeholder="Share (basis points)" class="contribShare" />
+    `;
+    container.appendChild(div);
+}
+
+async function createSplitSheet() {
+    const workId = document.getElementById('splitWorkId').value;
+    const contributors = [];
+    const contribDivs = document.querySelectorAll('.contributor');
+    contribDivs.forEach(div => {
+        const addr = div.querySelector('.contribAddr').value;
+        const role = div.querySelector('.contribRole').value;
+        const share = parseInt(div.querySelector('.contribShare').value);
+        if (addr && role && share) {
+            contributors.push({ contributor: addr, role, share });
+        }
+    });
+    const result = await apiCall(`/rights/works/${workId}/splits`, 'POST', { contributors });
+    document.getElementById('splitResult').textContent = JSON.stringify(result, null, 2);
+}
+
 // For MVP, these are placeholders - actual implementation would connect to blockchain

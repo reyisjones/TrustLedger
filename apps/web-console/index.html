@@ -42,10 +42,33 @@
     </div>
 
     <div class="section">
-        <h2>4. Verify Attestation</h2>
-        <input type="number" id="verifyAttId" placeholder="Attestation ID" />
-        <button onclick="verifyAttestation()">Verify</button>
-        <div id="verifyResult"></div>
+        <h2>5. Register Creative Work</h2>
+        <input type="text" id="workTitle" placeholder="Work title" />
+        <select id="workType">
+            <option value="composition">Composition</option>
+            <option value="recording">Recording</option>
+            <option value="video">Video</option>
+            <option value="lyrics">Lyrics</option>
+        </select>
+        <input type="text" id="workContentHash" placeholder="Content hash" />
+        <input type="text" id="workMetadataURI" placeholder="Metadata URI (IPFS)" />
+        <button onclick="registerWork()">Register Work</button>
+        <div id="workResult"></div>
+    </div>
+
+    <div class="section">
+        <h2>6. Create Split Sheet</h2>
+        <input type="number" id="splitWorkId" placeholder="Work ID" />
+        <div id="contributors">
+            <div class="contributor">
+                <input type="text" placeholder="Contributor address" class="contribAddr" />
+                <input type="text" placeholder="Role" class="contribRole" />
+                <input type="number" placeholder="Share (basis points)" class="contribShare" />
+            </div>
+        </div>
+        <button onclick="addContributor()">Add Contributor</button>
+        <button onclick="createSplitSheet()">Create Split Sheet</button>
+        <div id="splitResult"></div>
     </div>
 
     <script src="app.js"></script>

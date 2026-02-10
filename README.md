@@ -32,16 +32,21 @@ TrustLedger provides a neutral, tamper-resistant foundation for establishing and
 
 2. **API Gateway** (Node.js/Express)
    - RESTful interfaces for off-chain interactions
-   - Placeholder endpoints for MVP
+   - Azure Key Vault integration for secure key management
 
-3. **Web Console** (HTML/JS)
+3. **Indexing Service** (Node.js)
+   - Real-time event indexing from blockchain
+   - PostgreSQL storage with optimized queries
+   - OpenTelemetry observability
+
+4. **Web Console** (HTML/JS)
    - Simple UI for asset-claim-attestation flow
+   - Rights management interface
 
-4. **Indexing Service** (Planned)
-   - Efficient querying of attestations and provenance
-
-5. **Identity Layer** (Implemented)
-   - DID-based identities with verifiable credentials
+5. **Infrastructure** (Terraform/Helm/Docker)
+   - Azure cloud deployment
+   - Kubernetes orchestration
+   - CI/CD pipeline
 
 ## 📦 Current Status
 
@@ -63,7 +68,16 @@ TrustLedger provides a neutral, tamper-resistant foundation for establishing and
 - Proof-of-existence timestamps and provenance tracking
 - IPFS/Arweave metadata integration
 
-### 🔄 In Progress (Phase 4 - Enterprise/Azure Hybrid)
+### ✅ Completed (Phase 4 - Enterprise/Azure Hybrid)
+- Azure Key Vault integration for secure key management
+- Terraform infrastructure as code for Azure deployment
+- Helm charts for Kubernetes orchestration
+- Indexing service with OpenTelemetry observability
+- Docker containerization for all services
+- CI/CD pipeline with GitHub Actions
+- Automated deployment scripts
+
+### 🔄 In Progress (Phase 5 - Ecosystem Hardening)
 
 ### 📋 Roadmap
 - **Phase 3**: TrustLedger Rights™ (Intellectual property registry)
@@ -97,24 +111,45 @@ cd contracts/evm
 forge install
 ```
 
-### Running the MVP
+### Automated Deployment
 
-1. Start the API Gateway:
+1. Set up Azure credentials:
 ```bash
-cd services/api-gateway
-npm start
+export AZURE_CLIENT_ID="your-client-id"
+export AZURE_CLIENT_SECRET="your-client-secret"
+export AZURE_TENANT_ID="your-tenant-id"
 ```
 
-2. Open the Web Console:
+2. Run the deployment script:
 ```bash
-cd apps/web-console
-# Open index.html in your browser
+./infra/scripts/deploy.sh
 ```
 
-3. Test the contracts:
+This will:
+- Deploy Azure infrastructure (Key Vault, Container Apps, etc.)
+- Set up Kubernetes cluster with Helm
+- Configure monitoring and observability
+- Run health checks
+
+### Manual Deployment
+
+#### Infrastructure
 ```bash
-cd contracts/evm
-forge test
+cd infra/terraform
+terraform init
+terraform apply
+```
+
+#### Services
+```bash
+cd infra/helm
+helm install trustledger .
+```
+
+#### Docker Build
+```bash
+docker build -f infra/docker/Dockerfile.api -t trustledger/api-gateway .
+docker build -f infra/docker/Dockerfile.indexing -t trustledger/indexing-service .
 ```
 
 ## 📚 Documentation
